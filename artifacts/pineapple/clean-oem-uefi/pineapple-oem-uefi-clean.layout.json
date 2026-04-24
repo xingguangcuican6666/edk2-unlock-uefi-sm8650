@@ -1,0 +1,8 @@
+{
+  "mode": "jump-payload",
+  "payload_elf": "/workspace/edk2/imgs/uefi.elf",
+  "raw": "pineapple-oem-uefi-clean.raw.bin",
+  "gzip": "pineapple-oem-uefi-clean.raw.bin.gz",
+  "raw_size": 2950272,
+  "gzip_size": 2709321
+}

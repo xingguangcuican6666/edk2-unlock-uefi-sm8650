@@ -1,0 +1,8 @@
+{
+  "mode": "jump-payload",
+  "payload_elf": "/workspace/edk2/out/artifacts/clean-oem-uefi/pineapple-oem-uefi-clean-skip-installcfg.elf",
+  "raw": "pineapple-oem-uefi-clean-skip-installcfg.raw.bin",
+  "gzip": "pineapple-oem-uefi-clean-skip-installcfg.raw.bin.gz",
+  "raw_size": 2950272,
+  "gzip_size": 2709321
+}
