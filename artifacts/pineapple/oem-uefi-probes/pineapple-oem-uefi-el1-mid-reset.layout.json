@@ -1,0 +1,8 @@
+{
+  "mode": "jump-payload",
+  "payload_elf": "/workspace/edk2/out/artifacts/oem-uefi-probes/pineapple-oem-uefi-el1-mid-reset.elf",
+  "raw": "pineapple-oem-uefi-el1-mid-reset.raw.bin",
+  "gzip": "pineapple-oem-uefi-el1-mid-reset.raw.bin.gz",
+  "raw_size": 2950272,
+  "gzip_size": 2709334
+}

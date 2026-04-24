@@ -87,3 +87,14 @@ Final call probes around `bl 0xa7010940`:
 
 - `pineapple-oem-uefi-final-call-return-reset.boot.img`
   reset at `0xa700ea80`, proving the whole final call returned back to its caller
+
+
+Coarse EL1 probes:
+- `pineapple-oem-uefi-el1-early-reset.boot.img`
+  reset at `0xa700f0c0`, after the early EL1 init block
+
+- `pineapple-oem-uefi-el1-mid-reset.boot.img`
+  reset at `0xa700f140`, after the mid-path context/build stage
+
+- `pineapple-oem-uefi-el1-late-reset.boot.img`
+  reset at `0xa700f590`, a much later stage in the EL1 main path, closer to the deeper load/handoff chain

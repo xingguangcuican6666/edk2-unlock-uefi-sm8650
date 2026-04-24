@@ -1,0 +1,50 @@
+{
+  "input": "/workspace/edk2/out/artifacts/oem-uefi-probes/pineapple-oem-uefi-el1-early-reset.boot.img",
+  "size": 2715648,
+  "header_version": 3,
+  "header_size": 1596,
+  "kernel_size": 2709330,
+  "ramdisk_size": 0,
+  "os_version_raw": 436207988,
+  "reserved": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "signature_size": 0,
+  "kernel_offset": 4096,
+  "kernel_padded_size": 2711552,
+  "bytes_after_kernel": 0,
+  "kernel_blob": "pineapple-oem-uefi-el1-early-reset.boot.kernel.bin",
+  "kernel_signatures": {
+    "elf": null,
+    "fvh": null,
+    "cpio": null,
+    "android": null,
+    "mz": 43488,
+    "arm64_image_magic": null
+  },
+  "gzip_unpacked": {
+    "size": 2950272,
+    "path": "pineapple-oem-uefi-el1-early-reset.boot.kernel.unpacked.bin",
+    "signatures": {
+      "elf": 4096,
+      "fvh": 8232,
+      "cpio": null,
+      "android": null,
+      "mz": 342721,
+      "arm64_image_magic": 56
+    },
+    "u32_words": [
+      335544336,
+      3573751839,
+      0,
+      0,
+      2950272,
+      0,
+      0,
+      0
+    ]
+  }
+}
