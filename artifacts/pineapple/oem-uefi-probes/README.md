@@ -70,3 +70,20 @@ Post-EL main path probes:
 
 - `pineapple-oem-uefi-before-final-call-reset.boot.img`
   reset at `0xa700ea7c`, so execution reached the final handoff call in this block
+
+
+Final call probes around `bl 0xa7010940`:
+- `pineapple-oem-uefi-final-call-entry-reset.boot.img`
+  reset at `0xa7010940`, proving control entered the final call target
+
+- `pineapple-oem-uefi-final-call-after-subcall1.boot.img`
+  reset at `0xa7010958`, proving the first inner subcall returned
+
+- `pineapple-oem-uefi-final-call-after-subcall2.boot.img`
+  reset at `0xa701095c`, proving the second inner subcall returned
+
+- `pineapple-oem-uefi-final-call-after-subcall3.boot.img`
+  reset at `0xa7010968`, proving the third inner subcall returned and the function is about to return
+
+- `pineapple-oem-uefi-final-call-return-reset.boot.img`
+  reset at `0xa700ea80`, proving the whole final call returned back to its caller
