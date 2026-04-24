@@ -1,0 +1,8 @@
+{
+  "mode": "entry-reset",
+  "payload_elf": "/workspace/edk2/imgs/uefi.elf",
+  "raw": "pineapple-entry-reset.raw.bin",
+  "gzip": "pineapple-entry-reset.raw.bin.gz",
+  "raw_size": 2950272,
+  "gzip_size": 2709320
+}
