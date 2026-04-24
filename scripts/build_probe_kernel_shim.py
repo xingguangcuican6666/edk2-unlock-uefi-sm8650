@@ -113,7 +113,7 @@ def run(cmd: list[str], cwd: pathlib.Path) -> None:
 def main() -> int:
     args = parse_args()
     payload = pathlib.Path(args.payload_elf).resolve()
-    output_prefix = pathlib.Path(args.output_prefix)
+    output_prefix = pathlib.Path(args.output_prefix).resolve()
     output_prefix.parent.mkdir(parents=True, exist_ok=True)
 
     with tempfile.TemporaryDirectory(prefix="probe-shim-", dir="/tmp") as tmp_dir_name:
