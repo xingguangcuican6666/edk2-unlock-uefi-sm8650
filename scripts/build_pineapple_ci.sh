@@ -4,6 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT_DIR="${OUT_DIR:-${ROOT_DIR}/out}"
 ARTIFACT_DIR="${ARTIFACT_DIR:-${OUT_DIR}/artifacts}"
+OEM_ARTIFACT_DIR="${ARTIFACT_DIR}/oem"
 BUILD_OUTPUT_DIR="${BUILD_OUTPUT_DIR:-${OUT_DIR}/Build}"
 BOARD_NAME="${BOARD_NAME:-pineapple}"
 BOOT_HEADER_VERSION="${BOOT_HEADER_VERSION:-4}"
@@ -15,6 +16,7 @@ LOG_FILE="${LOG_FILE:-${OUT_DIR}/build_modulepkg.log}"
 TARGET_BUILD_VARIANT="${TARGET_BUILD_VARIANT:-userdebug}"
 
 mkdir -p "${ARTIFACT_DIR}"
+mkdir -p "${OEM_ARTIFACT_DIR}"
 mkdir -p "${OUT_DIR}"
 
 pushd "${ROOT_DIR}" >/dev/null
@@ -130,11 +132,30 @@ python3 "${ROOT_DIR}/QcomModulePkg/Tools/image_header.py" \
 
 popd >/dev/null
 
-python3 "${ROOT_DIR}/scripts/pack_bootimg.py" \
-  --kernel "${UNSIGNED_ABL}" \
-  --output "${ARTIFACT_DIR}/pineapple-dualstage-boot.img" \
-  --header-version "${BOOT_HEADER_VERSION}" \
-  --cmdline "${BOOT_CMDLINE}"
+if [[ -f "${ROOT_DIR}/imgs/boot.img" ]]; then
+  python3 "${ROOT_DIR}/scripts/repack_stock_boot.py" \
+    --template-boot "${ROOT_DIR}/imgs/boot.img" \
+    --signature-blob "${UNSIGNED_ABL}" \
+    --output "${ARTIFACT_DIR}/pineapple-dualstage-boot.img"
+else
+  python3 "${ROOT_DIR}/scripts/pack_bootimg.py" \
+    --kernel "${UNSIGNED_ABL}" \
+    --output "${ARTIFACT_DIR}/pineapple-dualstage-boot.img" \
+    --header-version "${BOOT_HEADER_VERSION}" \
+    --cmdline "${BOOT_CMDLINE}"
+fi
+
+if [[ -f "${ROOT_DIR}/imgs/abl.elf" ]]; then
+  python3 "${ROOT_DIR}/scripts/analyze_qcom_elf_fv.py" \
+    --input "${ROOT_DIR}/imgs/abl.elf" \
+    --output-dir "${OEM_ARTIFACT_DIR}"
+fi
+
+if [[ -f "${ROOT_DIR}/imgs/uefi.elf" ]]; then
+  python3 "${ROOT_DIR}/scripts/analyze_qcom_elf_fv.py" \
+    --input "${ROOT_DIR}/imgs/uefi.elf" \
+    --output-dir "${OEM_ARTIFACT_DIR}"
+fi
 
 cp "${UNSIGNED_ABL}" "${ARTIFACT_DIR}/pineapple-unsigned_abl.elf"
 cp "${LINUX_LOADER_EFI}" "${ARTIFACT_DIR}/pineapple-stage1-linuxloader.efi"
@@ -152,7 +173,10 @@ build_target=${BUILD_TARGET}
 boot_header_version=${BOOT_HEADER_VERSION}
 boot_cmdline=${BOOT_CMDLINE}
 boot_img=pineapple-dualstage-boot.img
+boot_template=imgs/boot.img
+init_boot_template=imgs/init_boot.img
 primary_uefi=pineapple-stage1-linuxloader.efi
 embedded_stage2_efi=pineapple-stage2-loader.efi
 unsigned_abl=pineapple-unsigned_abl.elf
+oem_manifests_dir=oem
 EOF

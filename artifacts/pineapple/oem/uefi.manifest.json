@@ -1,0 +1,40 @@
+{
+  "input": "/workspace/edk2/imgs/uefi.elf",
+  "size": 2946176,
+  "elf_class": 64,
+  "program_headers": 3,
+  "load_segments": [
+    {
+      "type": 1,
+      "offset": 4096,
+      "vaddr": 2801795072,
+      "paddr": 2801795072,
+      "filesz": 2936832,
+      "memsz": 2936832,
+      "flags": 7,
+      "align": 4096
+    }
+  ],
+  "fv_hits": [
+    {
+      "qualcomm_prefix_offset": 4096,
+      "fvh_offset": 4136,
+      "qualcomm_prefix_hex": "da39001400000000000000000000000078e58c8c3d8a1c4f9935896185c32dd300d02c0000000000",
+      "file_system_guid": "8c8ce578-8a3d-4f1c-9935-896185c32dd3",
+      "fv_length": 2936832,
+      "attributes": 851711,
+      "header_length": 72,
+      "checksum": 50676,
+      "ext_header_offset": 0,
+      "revision": 2,
+      "block_map": [
+        {
+          "block_size": 717,
+          "block_count": 4096
+        }
+      ],
+      "extracted_fv": "uefi.segment0.fv.bin",
+      "ffs_entries": []
+    }
+  ]
+}

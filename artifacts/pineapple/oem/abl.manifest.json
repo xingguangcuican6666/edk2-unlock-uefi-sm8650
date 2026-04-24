@@ -1,0 +1,40 @@
+{
+  "input": "/workspace/edk2/imgs/abl.elf",
+  "size": 298808,
+  "elf_class": 32,
+  "program_headers": 3,
+  "load_segments": [
+    {
+      "type": 1,
+      "offset": 4096,
+      "vaddr": 2678063104,
+      "paddr": 2678063104,
+      "filesz": 290816,
+      "memsz": 290816,
+      "flags": 7,
+      "align": 4096
+    }
+  ],
+  "fv_hits": [
+    {
+      "qualcomm_prefix_offset": 4096,
+      "fvh_offset": 4136,
+      "qualcomm_prefix_hex": "0000000000000000000000000000000078e58c8c3d8a1c4f9935896185c32dd30070040000000000",
+      "file_system_guid": "8c8ce578-8a3d-4f1c-9935-896185c32dd3",
+      "fv_length": 290816,
+      "attributes": 261887,
+      "header_length": 72,
+      "checksum": 33428,
+      "ext_header_offset": 0,
+      "revision": 2,
+      "block_map": [
+        {
+          "block_size": 568,
+          "block_count": 512
+        }
+      ],
+      "extracted_fv": "abl.segment0.fv.bin",
+      "ffs_entries": []
+    }
+  ]
+}
