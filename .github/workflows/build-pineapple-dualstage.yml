@@ -1,0 +1,66 @@
+name: Build Pineapple Dual-Stage UEFI
+
+on:
+  push:
+    paths:
+      - ".github/workflows/build-pineapple-dualstage.yml"
+      - "QcomModulePkg/**"
+      - "docs/pineapple-dualstage-ci.md"
+      - "makefile"
+      - "scripts/build_pineapple_ci.sh"
+      - "scripts/pack_bootimg.py"
+  workflow_dispatch:
+    inputs:
+      target_ref:
+        description: "Git ref to build"
+        required: false
+        default: "uefi.lnx.4.0.r14-rel"
+      boot_header_version:
+        description: "Android boot header version"
+        required: false
+        default: "4"
+      boot_cmdline:
+        description: "Boot image cmdline override"
+        required: false
+        default: ""
+  repository_dispatch:
+    types:
+      - build-pineapple-dualstage
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.ref || github.event.inputs.target_ref || github.ref }}
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            clang \
+            lld \
+            gcc-aarch64-linux-gnu \
+            binutils-aarch64-linux-gnu \
+            uuid-dev \
+            iasl \
+            python3
+
+      - name: Build dual-stage pineapple artifacts
+        env:
+          TARGET_REF: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.ref || github.event.inputs.target_ref || github.ref }}
+          BOOT_HEADER_VERSION: ${{ github.event.inputs.boot_header_version || '4' }}
+          BOOT_CMDLINE: ${{ github.event.inputs.boot_cmdline || github.event.client_payload.boot_cmdline || '' }}
+        run: |
+          bash scripts/build_pineapple_ci.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pineapple-dualstage-artifacts
+          if-no-files-found: error
+          path: out/artifacts/*

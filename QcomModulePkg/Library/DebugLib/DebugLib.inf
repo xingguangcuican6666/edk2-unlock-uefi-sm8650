@@ -1,0 +1,42 @@
+#/* @file
+# * Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+# * SPDX-License-Identifier: BSD-3-Clause-Clear
+# *
+# * Copyright (c) 2006 - 2019, Intel Corporation. All rights reserved.
+# * SPDX-License-Identifier: BSD-2-Clause-Patent
+#*/
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = BaseDebugLibSerialPort
+  FILE_GUID                      = BB83F95F-EDBC-4884-A520-CD42AF388FAE
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = DebugLib
+  CONSTRUCTOR                    = BaseDebugLibSerialPortConstructor
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 EBC
+#
+
+[Sources]
+  DebugLib.c
+
+[Protocols]
+  gEfiSerialIoProtocolGuid
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  BaseMemoryLibOptDxe
+  PcdLib
+  PrintLib
+  BaseLib
+  DebugPrintErrorLevelLib
+
+[Pcd]
+  gEfiMdePkgTokenSpaceGuid.PcdDebugClearMemoryValue  ## SOMETIMES_CONSUMES
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask      ## CONSUMES
+  gEfiMdePkgTokenSpaceGuid.PcdFixedDebugPrintErrorLevel ## CONSUMES
+

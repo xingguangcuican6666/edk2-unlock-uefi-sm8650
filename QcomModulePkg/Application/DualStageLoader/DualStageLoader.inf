@@ -1,0 +1,111 @@
+#/* @file
+#  Copyright (c) 2026, Qualcomm Innovation Center, Inc. All rights reserved.
+#  SPDX-License-Identifier: BSD-3-Clause-Clear
+#*/
+
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = DualStageLoader
+  FILE_GUID                      = a1168d25-1f58-4d2b-ae2e-f2f193b8897c
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = DualStageLoaderEntry
+
+[BuildOptions]
+  GCC:*_*_*_CC_FLAGS = $(LLVM_ENABLE_SAFESTACK) $(LLVM_SAFESTACK_USE_PTR) $(LLVM_SAFESTACK_COLORING)
+
+[BuildOptions.AARCH64]
+  GCC:*_*_*_CC_FLAGS = $(SDLLVM_COMPILE_ANALYZE) $(SDLLVM_ANALYZE_REPORT)
+  GCC:*_*_*_CC_FLAGS = $(UBSAN_UEFI_GCC_FLAG_UNDEFINED)
+  GCC:*_*_*_CC_FLAGS = $(UBSAN_UEFI_GCC_FLAG_ALIGNMENT)
+  GCC:*_*_*_CC_FLAGS = $(PVMFW_USE_DUMMY_BCC)
+
+[Sources]
+  DualStageLoader.c
+
+[Packages]
+  ArmPkg/ArmPkg.dec
+  MdePkg/MdePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  ArmPlatformPkg/ArmPlatformPkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  QcomModulePkg/QcomModulePkg.dec
+
+[LibraryClasses]
+  DxeServicesTableLib
+  UefiLib
+  UefiApplicationEntryPoint
+  CacheMaintenanceLib
+  Zlib
+  ArmLib
+  ArmSmcLib
+  BaseLib
+  DebugLib
+  DevicePathLib
+  HobLib
+  PerformanceLib
+  DebugPrintErrorLevelLib
+  FdtLib
+  LibUfdt
+  TimerLib
+  BootLib
+  StackCanary
+  UbsanLib
+  Lz4Lib
+
+[LibraryClasses.AARCH64]
+  AesLib
+  OpenDice
+  Lz4Lib
+
+[Guids]
+  gEfiFileInfoGuid
+  gArmMpCoreInfoGuid
+  gEfiSdRemovableGuid
+  gEfiFileSystemInfoGuid
+  gEfiPartitionTypeGuid
+  gEfiEventVirtualAddressChangeGuid
+  gEfiEmmcRpmbPartitionGuid
+  gEfiEmmcGppPartition1Guid
+  gEfiEmmcUserPartitionGuid
+  gEfiNandUserPartitionGuid
+  gEfiPlatPartitionTypeGuid
+  gEfiGlobalVariableGuid
+  gEfiLogFSPartitionGuid
+  gEfiBootImgPartitionGuid
+  gEfiRecoveryImgPartitionGuid
+  gEfiUfsLU0Guid
+  gEfiUfsLU1Guid
+  gEfiUfsLU2Guid
+  gEfiUfsLU3Guid
+  gEfiUfsLU4Guid
+  gEfiUfsLU5Guid
+  gEfiUfsLU6Guid
+  gEfiUfsLU7Guid
+  gEfiNvme0Guid
+
+[Protocols]
+  gEfiSimpleTextInputExProtocolGuid
+  gEfiBlockIoProtocolGuid
+  gEfiLoadedImageProtocolGuid
+  gEfiDevicePathToTextProtocolGuid
+  gEfiDevicePathProtocolGuid
+  gEfiDevicePathFromTextProtocolGuid
+  gEfiSimpleFileSystemProtocolGuid
+  gEfiLoadFileProtocolGuid
+  gEfiDiskIoProtocolGuid
+  gEfiUsbIoProtocolGuid
+  gEfiPlatformInfoProtocolGuid
+  gEfiChipInfoProtocolGuid
+  gQcomPmicVersionProtocolGuid
+  gEfiMemCardInfoProtocolGuid
+  gEfiPrint2ProtocolGuid
+  gEfiPartitionRecordGuid
+  gEfiResetReasonProtocolGuid
+  gQcomRngProtocolGuid
+
+[FixedPcd]
+  gQcomTokenSpaceGuid.EnableMdtpSupport
+
+[Depex]
+  TRUE

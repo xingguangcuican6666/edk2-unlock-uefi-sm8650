@@ -1,0 +1,41 @@
+[Defines]
+	INF_VERSION                    = 0x00010005
+	BASE_NAME                      = OpenDice
+	FILE_GUID                      = bdcc0f07-481e-45f6-9ba7-f8f026eef987
+	MODULE_TYPE                    = BASE
+	VERSION_STRING                 = 1.0
+	LIBRARY_CLASS                  = OpenDice
+
+[BuildOptions]
+  GCC:*_*_*_CC_FLAGS = $(LLVM_ENABLE_SAFESTACK) $(LLVM_SAFESTACK_USE_PTR) $(LLVM_SAFESTACK_COLORING)
+
+[BuildOptions.AARCH64]
+  GCC:*_*_*_CC_FLAGS = -DPVMFW_BCC
+  GCC:*_*_*_CC_FLAGS = $(PVMFW_USE_DUMMY_BCC)
+  GCC:*_*_*_CC_FLAGS = $(SDLLVM_COMPILE_ANALYZE) $(SDLLVM_ANALYZE_REPORT)
+
+[Sources.AARCH64]
+	open-dice/src/android/bcc.c
+	open-dice/src/boringssl_hash_kdf_ops.c
+	open-dice/src/boringssl_ed25519_ops.c
+	open-dice/src/cbor_cert_op.c
+	open-dice/src/cbor_ed25519_cert_op.c
+	open-dice/src/cbor_reader.c
+	open-dice/src/cbor_writer.c
+	open-dice/src/clear_memory.c
+	open-dice/src/dice.c
+	open-dice/src/utils.c
+	boringssl/src/crypto/fipsmodule/sha/sha512.c
+	boringssl/src/crypto/hkdf/hkdf.c
+	boringssl/src/crypto/fipsmodule/hmac/hmac.c
+	boringssl/src/crypto/fipsmodule/digest/digest.c
+	boringssl/src/crypto/fipsmodule/digest/digests.c
+	boringssl/src/crypto/curve25519/curve25519.c
+	boringssl/linux-aarch64/crypto/fipsmodule/sha512-armv8-linux.S
+	boringssl/src/crypto/thread_none.c
+	QcBcc.c
+	opendice-util.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  QcomModulePkg/QcomModulePkg.dec

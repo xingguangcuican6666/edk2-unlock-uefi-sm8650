@@ -1,0 +1,27 @@
+#/*
+# * Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+# * SPDX-License-Identifier: BSD-3-Clause-Clear
+#*/
+
+
+[Defines]
+        INF_VERSION                    = 0x00010005
+        BASE_NAME                      = Lz4Lib
+        FILE_GUID                      = 4290415d-a219-41c2-8c00-31382eeb1d86
+        MODULE_TYPE                    = BASE
+        VERSION_STRING                 = 1.0
+        LIBRARY_CLASS                  = Lz4Lib
+
+[BuildOptions]
+  GCC:*_*_*_CC_FLAGS = -DAVB_COMPILATION -DAVB_ENABLE_DEBUG  -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
+  GCC:*_*_*_CC_FLAGS = $(LLVM_ENABLE_SAFESTACK) $(LLVM_SAFESTACK_USE_PTR) $(LLVM_SAFESTACK_COLORING)
+
+[BuildOptions.AARCH64]
+  GCC:*_*_*_CC_FLAGS = $(SDLLVM_COMPILE_ANALYZE) $(SDLLVM_ANALYZE_REPORT)
+
+[Sources]
+        lz4.c
+
+[Packages]
+        MdePkg/MdePkg.dec
+        QcomModulePkg/QcomModulePkg.dec
