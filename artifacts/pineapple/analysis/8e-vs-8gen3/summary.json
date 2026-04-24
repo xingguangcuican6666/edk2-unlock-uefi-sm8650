@@ -1,0 +1,2062 @@
+{
+  "reference": "imgs/8e.zip",
+  "candidate": "imgs/8gen3.zip",
+  "reference_entry_count": 3544,
+  "candidate_entry_count": 118,
+  "reference_module_count": 225,
+  "candidate_module_count": 2,
+  "reference_only_modules": [
+    {
+      "name": "EdkShell",
+      "bytes": 985106,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "VariableRuntimeDxe",
+      "bytes": 967242,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "BaseCryptoDriverDxeAARCH64",
+      "bytes": 901210,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ufpdevicefw",
+      "bytes": 443936,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "RegularExpressionDxe",
+      "bytes": 424490,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Low Battery",
+      "bytes": 403690,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Too Hot",
+      "bytes": 403682,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "BdsDxe",
+      "bytes": 395880,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Logo",
+      "bytes": 390002,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "MsBootPolicy",
+      "bytes": 356890,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "DALSys",
+      "bytes": 344104,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "BootMenu",
+      "bytes": 343726,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "ClockDxe",
+      "bytes": 278608,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "PmicDxe",
+      "bytes": 274510,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "DxeCore",
+      "bytes": 204304,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "UCDxe",
+      "bytes": 192550,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ICBDxe",
+      "bytes": 188492,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SettingsManagerDxe",
+      "bytes": 165594,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "FrontPage",
+      "bytes": 161860,
+      "sections": [
+        "PE32 image section",
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "UFSDxe",
+      "bytes": 151576,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "HALIOMMU",
+      "bytes": 143602,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "IdentityAndAuthManagerDxe",
+      "bytes": 130828,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "SdccDxe",
+      "bytes": 127036,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "HiiDatabase",
+      "bytes": 123434,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "PILDxe",
+      "bytes": 118824,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SetupBrowser",
+      "bytes": 108642,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "OnScreenKeyboardDxe",
+      "bytes": 100114,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "UsbfnDwc3Dxe",
+      "bytes": 98608,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "DfciMenu",
+      "bytes": 94984,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "UsbConfigDxe",
+      "bytes": 90236,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "XhciDxe",
+      "bytes": 90136,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "PciBusDxe",
+      "bytes": 80126,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "DisplayEngine",
+      "bytes": 78514,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "EnvDxeEnhanced",
+      "bytes": 77864,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "UsbBusDxe",
+      "bytes": 77852,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ULogDxe",
+      "bytes": 77850,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "NpaDxe",
+      "bytes": 77848,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "MsUiThemeProtocol",
+      "bytes": 75318,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "VcsDxe",
+      "bytes": 69708,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "TzDxeLA",
+      "bytes": 69656,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SimpleWindowManagerDxe",
+      "bytes": 61744,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "I2C",
+      "bytes": 61528,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SPI",
+      "bytes": 61528,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "RpmhDxe",
+      "bytes": 61500,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "VerifiedBootDxe",
+      "bytes": 61480,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "UsbMsdDxe",
+      "bytes": 61470,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "DevicePathDxe",
+      "bytes": 60974,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "AcpiTables",
+      "bytes": 58142,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "NvmExpressDxe",
+      "bytes": 57884,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "RmVmDxe",
+      "bytes": 57370,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "FvDxe",
+      "bytes": 57366,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SecurityStubDxe",
+      "bytes": 54340,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "UsbDeviceDxe",
+      "bytes": 53300,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ScmDxeCompat",
+      "bytes": 53282,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "PartitionDxe",
+      "bytes": 53274,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "ScsiDisk",
+      "bytes": 52754,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Fat",
+      "bytes": 51720,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "AdvancedFileLogger",
+      "bytes": 50762,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "DriverHealthManagerDxe",
+      "bytes": 50384,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "ChipInfo",
+      "bytes": 49214,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "UsbMassStorageDxe",
+      "bytes": 49196,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "DALTLMM",
+      "bytes": 49194,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "PmicGlinkDxe",
+      "bytes": 49188,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "logo1.bmp",
+      "bytes": 48446,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "ArmCpuDxe",
+      "bytes": 47142,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "MailboxDxe",
+      "bytes": 45104,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ResetRuntimeDxe",
+      "bytes": 45098,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "DDRInfoDxe",
+      "bytes": 45088,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SPMI",
+      "bytes": 45076,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "TerminalDxe",
+      "bytes": 44056,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "XhciPciEmulation",
+      "bytes": 41236,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ButtonsDxe",
+      "bytes": 41098,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "AcpiTableDxe",
+      "bytes": 41004,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "UsbPwrCtrlDxe",
+      "bytes": 40998,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "PILProxyDxe",
+      "bytes": 40994,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ASN1X509Dxe",
+      "bytes": 40992,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ConSplitterDxe",
+      "bytes": 40990,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "SecRSADxe",
+      "bytes": 40990,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SmemDxe",
+      "bytes": 40986,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "DiskIoDxe",
+      "bytes": 40980,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "SecureBootProvisioningDxe",
+      "bytes": 40626,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "DfciManager",
+      "bytes": 37634,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "HwhMenu",
+      "bytes": 37512,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "FontDxe",
+      "bytes": 36942,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "HSUART",
+      "bytes": 36940,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "QcomScmiDxe",
+      "bytes": 36914,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "TsensDxe",
+      "bytes": 36908,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "IPCCDxe",
+      "bytes": 36906,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SPSSDxe",
+      "bytes": 36906,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "RngDxe",
+      "bytes": 36904,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ShmBridgeDxeLA",
+      "bytes": 36902,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "HidKeyboardDxe",
+      "bytes": 35870,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "PcdDxe",
+      "bytes": 35592,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "MsWheaReportDxe",
+      "bytes": 33860,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "GraphicsConsoleDxe",
+      "bytes": 33830,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "FvSimpleFileSystem",
+      "bytes": 33318,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "EmbeddedMonotonicCounter",
+      "bytes": 32862,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "PlatformInfoDxeDriver",
+      "bytes": 32838,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "HWIODxeDriver",
+      "bytes": 32822,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SimpleTextInOutSerial",
+      "bytes": 32822,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "PwrUtilsDxe",
+      "bytes": 32818,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "ParserDxe",
+      "bytes": 32798,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "CmdDbDxe",
+      "bytes": 32796,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "QRKSDxe",
+      "bytes": 32792,
+      "sections": [
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SmbiosDxe",
+      "bytes": 29734,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Qup",
+      "bytes": 28760,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "UsbInitDxe",
+      "bytes": 28720,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "SerialPortDxe",
+      "bytes": 28710,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "QcomWDogDxe",
+      "bytes": 28706,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "PsStateDxe",
+      "bytes": 28704,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section",
+        "Version section"
+      ]
+    },
+    {
+      "name": "RenderingEngineDxe",
+      "bytes": 28216,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "ConPlatformDxe",
+      "bytes": 28190,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "BootManagerPolicyDxe",
+      "bytes": 27762,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "ScsiBus",
+      "bytes": 27152,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "SmBiosTableDxe",
+      "bytes": 26708,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "UsbKbHidDxe",
+      "bytes": 26136,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "HwErrorBert",
+      "bytes": 25642,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "UsbMouseHidDxe",
+      "bytes": 25118,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "RamPartitionDxe",
+      "bytes": 24662,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "MuCryptoDxe",
+      "bytes": 24636,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "VirtualKeyboardDxe",
+      "bytes": 24318,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "LoadOptionVariablePolicyDxe",
+      "bytes": 24192,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "HidMouseAbsolutePointerDxe",
+      "bytes": 24118,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "FirmwarePerformanceDxe",
+      "bytes": 23634,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "SimpleFbDxe",
+      "bytes": 23612,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "ArmGicDxe",
+      "bytes": 23608,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "ReportStatusCodeRouterRuntimeDxe",
+      "bytes": 23124,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "EsrtFmpDxe",
+      "bytes": 23080,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "DtPlatformDxe",
+      "bytes": 22200,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "MsEarlyGraphicsDxe",
+      "bytes": 21578,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "BootGraphicsResourceTableDxe",
+      "bytes": 21562,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "PrintDxe",
+      "bytes": 21540,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "RuntimeDxe",
+      "bytes": 21032,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "MuVarPolicyFoundationDxe",
+      "bytes": 19048,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "StatusCodeHandlerRuntimeDxe",
+      "bytes": 19036,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "RealTimeClock",
+      "bytes": 19008,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "AcpiRgrt",
+      "bytes": 18980,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "CapsuleRuntimeDxe",
+      "bytes": 18504,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "ArmTimerDxe",
+      "bytes": 18492,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "GopOverrideDxe",
+      "bytes": 18480,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "EnglishDxe",
+      "bytes": 18454,
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "WatchdogTimer",
+      "bytes": 17984,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "NullMemoryTestDxe",
+      "bytes": 17974,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "MetronomeDxe",
+      "bytes": 17452,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "AcpiPlatform",
+      "bytes": 16958,
+      "sections": [
+        "DXE dependency section",
+        "PE32 image section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "System Integrity Policy Default",
+      "bytes": 9465,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_bf237_rm692h5_6p8_deva11_dsc_cmd.xml",
+      "bytes": 6398,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_bf237_rm692h5_6p8_dev0_dsc_cmd.xml",
+      "bytes": 6392,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_bf237_rm692h5_6p8_dev1_dsc_cmd.xml",
+      "bytes": 6392,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_bf368_nt37900b_8p03_dsc_cmd.xml",
+      "bytes": 6270,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_hehui_rm692h5_6p02_dev1_dsc_cmd.xml",
+      "bytes": 6227,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_sharp_120hz_qhd_plus_dsc_cmd.xml",
+      "bytes": 5562,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_sharp_120hz_qhd_plus_dsc_vid.xml",
+      "bytes": 5420,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "FirmwareSettingsIndicator",
+      "bytes": 5034,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "BootFailIndicator",
+      "bytes": 5018,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "VolumeUpIndicator",
+      "bytes": 5018,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "SecParti.cfg",
+      "bytes": 5010,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_himax_hx8874_9p06_dsc_cmd.xml",
+      "bytes": 4709,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_himax_hx8874_12p3_dev1_dsc_cmd.xml",
+      "bytes": 4706,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_bf288_rm692h5_6p85_dsc_cmd.xml",
+      "bytes": 4671,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_himax_hx8874_12p3_dev0_dsc_cmd.xml",
+      "bytes": 4640,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt36860_wqhd_dsc_cmd.xml",
+      "bytes": 4494,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt36860_wqhd_dsc_vid.xml",
+      "bytes": 4473,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_truly_wqxga_dsc_vid.xml",
+      "bytes": 4420,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_bf369_rm692k0_6p534_dsc_cmd.xml",
+      "bytes": 4328,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_hehui_rm692h5_6p02_dev0_dsc_cmd.xml",
+      "bytes": 4123,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_r66451_120hz_fhd_plus_dsc_cmd_demura.xml",
+      "bytes": 4058,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_vtdr6130_144hz_fhd_plus_dsc_cmd_demura.xml",
+      "bytes": 4042,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_truly_wqxga_dual_vid.xml",
+      "bytes": 4037,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_truly_1080p_vid.xml",
+      "bytes": 3956,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_sec_vtdr6130_144hz_fhd_plus_dsc_cmd_rfi.xml",
+      "bytes": 3922,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_r66451_144hz_fhd_plus_dsc_vid_cphy.xml",
+      "bytes": 3919,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_r66451_120hz_fhd_plus_dsc_cmd_hdk.xml",
+      "bytes": 3896,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_r66451_120hz_fhd_plus_dsc_cmd.xml",
+      "bytes": 3880,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_vtdr6130_144hz_fhd_plus_dsc_cmd_rfi.xml",
+      "bytes": 3875,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_r66451_144hz_fhd_plus_dsc_cmd_cphy.xml",
+      "bytes": 3870,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "PanelSimConfig.csv",
+      "bytes": 3864,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_secondary_truly_1080p_vid.xml",
+      "bytes": 3851,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_secondary_vtdr6130_144hz_fhd_plus_dsc_cmd.xml",
+      "bytes": 3849,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_vtdr6130_144hz_fhd_plus_dsc_cmd.xml",
+      "bytes": 3820,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_vtdr6130_120hz_fhd_plus_dsc_cmd.xml",
+      "bytes": 3788,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_vtdr6130_60hz_fhd_plus_dsc_cmd.xml",
+      "bytes": 3786,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_truly_wqxga_dsc_cmd.xml",
+      "bytes": 3777,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_cmd.xml",
+      "bytes": 3758,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_vtdr6130_144hz_fhd_plus_dsc_vid.xml",
+      "bytes": 3669,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_truly_wqxga_cmd_splitlink.xml",
+      "bytes": 3622,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_vtdr6130_120hz_fhd_plus_dsc_vid.xml",
+      "bytes": 3590,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_vtdr6130_60hz_fhd_plus_dsc_vid.xml",
+      "bytes": 3588,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_cmd_demura_nspr.xml",
+      "bytes": 3566,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_vid_demura_nspr.xml",
+      "bytes": 3549,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_truly_wqxga_dual_cmd.xml",
+      "bytes": 3535,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_sec_vtdr6130_144hz_fhd_plus_dsc_vid_rfi.xml",
+      "bytes": 3529,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_truly_1080p_cmd.xml",
+      "bytes": 3486,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_cmd_cphy_demura.xml",
+      "bytes": 3464,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_secondary_vtdr6130_144hz_fhd_plus_dsc_vid.xml",
+      "bytes": 3454,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_cmd_spr.xml",
+      "bytes": 3444,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_fhd_plus_dsc_cmd.xml",
+      "bytes": 3430,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_vid_spr.xml",
+      "bytes": 3423,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_vid_cphy_demura.xml",
+      "bytes": 3409,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_secondary_truly_1080p_cmd.xml",
+      "bytes": 3396,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_r66451_120hz_fhd_plus_dsc_vid.xml",
+      "bytes": 3392,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_cmd_cphy.xml",
+      "bytes": 3385,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_cmd_demura.xml",
+      "bytes": 3372,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_vid_demura.xml",
+      "bytes": 3355,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_10bit_wqhd_plus_dsc_cmd.xml",
+      "bytes": 3349,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_vid_cphy.xml",
+      "bytes": 3330,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_120hz_wqhd_plus_dsc_vid.xml",
+      "bytes": 3276,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_nt37801_10bit_wqhd_plus_dsc_vid.xml",
+      "bytes": 3264,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_r66451_60hz_fhd_plus_dsc_cmd.xml",
+      "bytes": 3207,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_sec_nt37801_120hz_wqhd_plus_dsc_cmd.xml",
+      "bytes": 3206,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_sec_nt37801_120hz_wqhd_plus_dsc_vid.xml",
+      "bytes": 3189,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_boe_amoled_wqhd_dsc_cmd.xml",
+      "bytes": 3111,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_boe_amoled_fhd_dsc_cmd.xml",
+      "bytes": 3037,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "BDS_Menu.cfg",
+      "bytes": 2973,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_boe_amoled_wqhd_dsc_vid.xml",
+      "bytes": 2967,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_r66451_60hz_fhd_plus_dsc_vid.xml",
+      "bytes": 2825,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_sharp_4k_dsc_cmd.xml",
+      "bytes": 2765,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_sharp_4k_dsc_vid.xml",
+      "bytes": 2682,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_zte_bf289_rm692h5_sec_422p_cmd.xml",
+      "bytes": 2447,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_sharp_1080p_cmd.xml",
+      "bytes": 2209,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "Panel_rumi_cwb_vga_dsc_vid.xml",
+      "bytes": 2069,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "uefiplat.cfg",
+      "bytes": 527,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "uefipil.cfg",
+      "bytes": 418,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    },
+    {
+      "name": "FirmwareDeviceTree",
+      "bytes": 44,
+      "sections": [
+        "Raw section",
+        "UI section"
+      ]
+    }
+  ],
+  "candidate_only_modules": [
+    "DualStageLoader"
+  ],
+  "shared_modules": [
+    "LinuxLoader"
+  ],
+  "reference_top_levels": [
+    [
+      "kernel.dump",
+      2654
+    ],
+    [
+      "kernel",
+      1
+    ],
+    [
+      "kernel.guids.csv",
+      1
+    ],
+    [
+      "kernel.report.txt",
+      1
+    ]
+  ],
+  "candidate_top_levels": [
+    [
+      "kernel.dump",
+      84
+    ],
+    [
+      "kernel",
+      1
+    ],
+    [
+      "kernel.guids.csv",
+      1
+    ],
+    [
+      "kernel.report.txt",
+      1
+    ]
+  ],
+  "reference_extensions": [
+    [
+      ".bin",
+      1768
+    ],
+    [
+      ".txt",
+      887
+    ],
+    [
+      "<none>",
+      1
+    ],
+    [
+      ".csv",
+      1
+    ]
+  ],
+  "candidate_extensions": [
+    [
+      ".bin",
+      54
+    ],
+    [
+      ".txt",
+      31
+    ],
+    [
+      "<none>",
+      1
+    ],
+    [
+      ".csv",
+      1
+    ]
+  ]
+}

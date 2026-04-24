@@ -1,0 +1,102 @@
+{
+  "input": "imgs/8gen3.zip",
+  "root_prefix": "8gen3",
+  "entry_count": 118,
+  "file_count": 87,
+  "total_uncompressed_size": 15762264,
+  "top_levels": [
+    [
+      "kernel.dump",
+      84
+    ],
+    [
+      "kernel",
+      1
+    ],
+    [
+      "kernel.guids.csv",
+      1
+    ],
+    [
+      "kernel.report.txt",
+      1
+    ]
+  ],
+  "extensions": [
+    [
+      ".bin",
+      54
+    ],
+    [
+      ".txt",
+      31
+    ],
+    [
+      "<none>",
+      1
+    ],
+    [
+      ".csv",
+      1
+    ]
+  ],
+  "guid_count": 4,
+  "guids": [
+    "046FAE99-CF2E-49ED-A6A8-A1488B7E80D3",
+    "8C8CE578-8A3D-4F1C-9935-896185C32DD3",
+    "9E21FD93-9C72-4C15-8C4B-E77F1DB2D792",
+    "EE4E5898-3914-4259-9D6E-DC7BD79403CF"
+  ],
+  "section_count": 8,
+  "sections": [
+    "kernel.dump/8C8CE578-8A3D-4F1C-9935-896185C32DD3/9E21FD93-9C72-4C15-8C4B-E77F1DB2D792/EE4E5898-3914-4259-9D6E-DC7BD79403CF/Raw section",
+    "kernel.dump/8C8CE578-8A3D-4F1C-9935-896185C32DD3/9E21FD93-9C72-4C15-8C4B-E77F1DB2D792/EE4E5898-3914-4259-9D6E-DC7BD79403CF/Volume image section",
+    "kernel.dump/8C8CE578-8A3D-4F1C-9935-896185C32DD3/9E21FD93-9C72-4C15-8C4B-E77F1DB2D792/EE4E5898-3914-4259-9D6E-DC7BD79403CF/Volume image section/046FAE99-CF2E-49ED-A6A8-A1488B7E80D3/DualStageLoader/PE32 image section",
+    "kernel.dump/8C8CE578-8A3D-4F1C-9935-896185C32DD3/9E21FD93-9C72-4C15-8C4B-E77F1DB2D792/EE4E5898-3914-4259-9D6E-DC7BD79403CF/Volume image section/046FAE99-CF2E-49ED-A6A8-A1488B7E80D3/DualStageLoader/UI section",
+    "kernel.dump/8C8CE578-8A3D-4F1C-9935-896185C32DD3/9E21FD93-9C72-4C15-8C4B-E77F1DB2D792/EE4E5898-3914-4259-9D6E-DC7BD79403CF/Volume image section/046FAE99-CF2E-49ED-A6A8-A1488B7E80D3/LinuxLoader/PE32 image section",
+    "kernel.dump/8C8CE578-8A3D-4F1C-9935-896185C32DD3/9E21FD93-9C72-4C15-8C4B-E77F1DB2D792/EE4E5898-3914-4259-9D6E-DC7BD79403CF/Volume image section/046FAE99-CF2E-49ED-A6A8-A1488B7E80D3/LinuxLoader/UI section",
+    "kernel.dump/8C8CE578-8A3D-4F1C-9935-896185C32DD3/Volume free space",
+    "kernel.dump/Padding"
+  ],
+  "named_nodes": [
+    [
+      "LinuxLoader",
+      18
+    ],
+    [
+      "DualStageLoader",
+      18
+    ],
+    [
+      "kernel.guids.csv",
+      1
+    ],
+    [
+      "kernel.report.txt",
+      1
+    ]
+  ],
+  "module_count": 2,
+  "modules": {
+    "DualStageLoader": {
+      "paths": [
+        "kernel.dump/8C8CE578-8A3D-4F1C-9935-896185C32DD3/9E21FD93-9C72-4C15-8C4B-E77F1DB2D792/EE4E5898-3914-4259-9D6E-DC7BD79403CF/Volume image section/046FAE99-CF2E-49ED-A6A8-A1488B7E80D3/DualStageLoader"
+      ],
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ],
+      "bytes": 901184
+    },
+    "LinuxLoader": {
+      "paths": [
+        "kernel.dump/8C8CE578-8A3D-4F1C-9935-896185C32DD3/9E21FD93-9C72-4C15-8C4B-E77F1DB2D792/EE4E5898-3914-4259-9D6E-DC7BD79403CF/Volume image section/046FAE99-CF2E-49ED-A6A8-A1488B7E80D3/LinuxLoader"
+      ],
+      "sections": [
+        "PE32 image section",
+        "UI section"
+      ],
+      "bytes": 1138736
+    }
+  }
+}

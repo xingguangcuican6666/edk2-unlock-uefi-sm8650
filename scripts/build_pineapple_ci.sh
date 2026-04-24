@@ -5,6 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT_DIR="${OUT_DIR:-${ROOT_DIR}/out}"
 ARTIFACT_DIR="${ARTIFACT_DIR:-${OUT_DIR}/artifacts}"
 OEM_ARTIFACT_DIR="${ARTIFACT_DIR}/oem"
+ANALYSIS_DIR="${ARTIFACT_DIR}/analysis/8e-vs-8gen3"
 BUILD_OUTPUT_DIR="${BUILD_OUTPUT_DIR:-${OUT_DIR}/Build}"
 BOARD_NAME="${BOARD_NAME:-pineapple}"
 BOOT_HEADER_VERSION="${BOOT_HEADER_VERSION:-4}"
@@ -17,6 +18,7 @@ TARGET_BUILD_VARIANT="${TARGET_BUILD_VARIANT:-userdebug}"
 
 mkdir -p "${ARTIFACT_DIR}"
 mkdir -p "${OEM_ARTIFACT_DIR}"
+mkdir -p "${ANALYSIS_DIR}"
 mkdir -p "${OUT_DIR}"
 
 pushd "${ROOT_DIR}" >/dev/null
@@ -184,6 +186,13 @@ if [[ -f "${ROOT_DIR}/imgs/8e.img" ]]; then
     "${OEM_ARTIFACT_DIR}/pineapple-8e-style-boot.kernel.unpacked.bin"
 fi
 
+if [[ -f "${ROOT_DIR}/imgs/8e.zip" && -f "${ROOT_DIR}/imgs/8gen3.zip" ]]; then
+  python3 "${ROOT_DIR}/scripts/compare_uefi_dumps.py" \
+    --reference "${ROOT_DIR}/imgs/8e.zip" \
+    --candidate "${ROOT_DIR}/imgs/8gen3.zip" \
+    --output-dir "${ANALYSIS_DIR}"
+fi
+
 cp "${UNSIGNED_ABL}" "${ARTIFACT_DIR}/pineapple-unsigned_abl.elf"
 cp "${LINUX_LOADER_EFI}" "${ARTIFACT_DIR}/pineapple-stage1-linuxloader.efi"
 cp "${DUAL_STAGE_LOADER_EFI}" "${ARTIFACT_DIR}/pineapple-stage2-loader.efi"
@@ -206,6 +215,7 @@ primary_uefi=pineapple-stage1-linuxloader.efi
 embedded_stage2_efi=pineapple-stage2-loader.efi
 unsigned_abl=pineapple-unsigned_abl.elf
 oem_manifests_dir=oem
+analysis_dir=analysis/8e-vs-8gen3
 eight_e_style_boot_img=pineapple-8e-style-boot.img
 eight_e_style_shim=pineapple-8e-style-shim.raw.bin.gz
 EOF
