@@ -13,6 +13,8 @@
 #include <Library/PartitionTableUpdate.h>
 #include <Library/StackCanary.h>
 #include "Library/ThreadStack.h"
+#include <Library/DrawUI.h>
+#include <Protocol/GraphicsOutput.h>
 
 #define DEFAULT_STACK_CHK_GUARD 0xc0c0c0c0
 
@@ -27,32 +29,106 @@ STATIC UINT32 BootDeviceType = EFI_MAX_FLASH_TYPE;
 
 STATIC
 VOID
-RenderStageBanner (
-  IN CONST CHAR8  *StageLabel,
-  IN UINT32       BgColor
+GetStagePixel (
+  IN  UINT32                          ColorId,
+  OUT EFI_GRAPHICS_OUTPUT_BLT_PIXEL   *Pixel
   )
 {
-  MENU_MSG_INFO MenuMsg;
-  CHAR8         EmptyMsg[] = "";
-  CHAR8         Title[MAX_MSG_SIZE];
-  CHAR8         Subtitle[MAX_MSG_SIZE];
-  UINT32        FgColor;
-  UINT32        Locations[] = {80, 120, 160, 200, 240, 280};
-  UINTN         Index;
+  Pixel->Reserved = 0;
+  switch (ColorId) {
+    case BGR_WHITE:
+      Pixel->Blue = 0xff; Pixel->Green = 0xff; Pixel->Red = 0xff; break;
+    case BGR_BLACK:
+      Pixel->Blue = 0x00; Pixel->Green = 0x00; Pixel->Red = 0x00; break;
+    case BGR_ORANGE:
+      Pixel->Blue = 0x00; Pixel->Green = 0xa5; Pixel->Red = 0xff; break;
+    case BGR_YELLOW:
+      Pixel->Blue = 0x00; Pixel->Green = 0xff; Pixel->Red = 0xff; break;
+    case BGR_RED:
+      Pixel->Blue = 0x00; Pixel->Green = 0x00; Pixel->Red = 0x98; break;
+    case BGR_GREEN:
+      Pixel->Blue = 0x00; Pixel->Green = 0xff; Pixel->Red = 0x00; break;
+    case BGR_BLUE:
+      Pixel->Blue = 0xff; Pixel->Green = 0x00; Pixel->Red = 0x00; break;
+    case BGR_CYAN:
+      Pixel->Blue = 0xff; Pixel->Green = 0xff; Pixel->Red = 0x00; break;
+    case BGR_SILVER:
+    default:
+      Pixel->Blue = 0xc0; Pixel->Green = 0xc0; Pixel->Red = 0xc0; break;
+  }
+}
+
+STATIC
+VOID
+RenderStageBanner (
+  IN CONST CHAR8  *StageLabel,
+  IN UINT32       BgColor,
+  IN UINT32       AccentColor,
+  IN UINTN        ProgressCount
+  )
+{
+  EFI_GRAPHICS_OUTPUT_PROTOCOL    *GraphicsOutput;
+  EFI_GRAPHICS_OUTPUT_BLT_PIXEL   Background;
+  EFI_GRAPHICS_OUTPUT_BLT_PIXEL   Accent;
+  EFI_STATUS                      Status;
+  UINTN                           Width;
+  UINTN                           Height;
+  UINTN                           TopStripeHeight;
+  UINTN                           BottomStripeHeight;
+  UINTN                           TagWidth;
+  UINTN                           Gap;
+  UINTN                           BlockWidth;
+  UINTN                           Index;
+  MENU_MSG_INFO                   MenuMsg;
+  CHAR8                           Title[MAX_MSG_SIZE];
+  CHAR8                           Subtitle[MAX_MSG_SIZE];
+  UINT32                          FgColor;
 
   if (!IsEnableDisplayMenuFlagSupported ()) {
     return;
   }
 
-  FgColor = (BgColor == BGR_BLUE || BgColor == BGR_RED) ? BGR_WHITE : BGR_BLACK;
-  DrawMenuInit ();
-
-  for (Index = 0; Index < ARRAY_SIZE (Locations); ++Index) {
-    SetMenuMsgInfo (&MenuMsg, EmptyMsg, COMMON_FACTOR, FgColor, BgColor,
-                    OPTION_ITEM, Locations[Index], NOACTION);
-    DrawMenu (&MenuMsg, NULL);
+  GraphicsOutput = NULL;
+  Status = gBS->LocateProtocol (&gEfiGraphicsOutputProtocolGuid, NULL,
+                                (VOID **)&GraphicsOutput);
+  if (EFI_ERROR (Status) || GraphicsOutput == NULL ||
+      GraphicsOutput->Mode == NULL || GraphicsOutput->Mode->Info == NULL) {
+    return;
   }
 
+  Width = GraphicsOutput->Mode->Info->HorizontalResolution;
+  Height = GraphicsOutput->Mode->Info->VerticalResolution;
+  if (Width == 0 || Height == 0) {
+    return;
+  }
+
+  GetStagePixel (BgColor, &Background);
+  GetStagePixel (AccentColor, &Accent);
+
+  GraphicsOutput->Blt (GraphicsOutput, &Background, EfiBltVideoFill,
+                       0, 0, 0, 0, Width, Height, 0);
+
+  TopStripeHeight = MAX (Height / 14, 24);
+  BottomStripeHeight = MAX (Height / 12, 28);
+  TagWidth = MAX (Width / 7, 96);
+  Gap = MAX (Width / 80, 8);
+  BlockWidth = MAX ((Width - ((ProgressCount + 1) * Gap)) / MAX (ProgressCount, 1), 48);
+
+  GraphicsOutput->Blt (GraphicsOutput, &Accent, EfiBltVideoFill,
+                       0, 0, 0, 0, Width, TopStripeHeight, 0);
+  GraphicsOutput->Blt (GraphicsOutput, &Accent, EfiBltVideoFill,
+                       0, 0, 0, Height - BottomStripeHeight,
+                       TagWidth, BottomStripeHeight, 0);
+
+  for (Index = 0; Index < ProgressCount; ++Index) {
+    UINTN DestX = Gap + (Index * (BlockWidth + Gap));
+    GraphicsOutput->Blt (GraphicsOutput, &Accent, EfiBltVideoFill,
+                         0, 0, DestX, Height - BottomStripeHeight,
+                         BlockWidth, BottomStripeHeight, 0);
+  }
+
+  DrawMenuInit ();
+  FgColor = (BgColor == BGR_BLUE || BgColor == BGR_RED) ? BGR_WHITE : BGR_BLACK;
   AsciiStrnCpyS (Title, sizeof (Title), "SM8650 DUALSTAGE",
                  AsciiStrLen ("SM8650 DUALSTAGE"));
   SetMenuMsgInfo (&MenuMsg, Title, COMMON_FACTOR, FgColor, BgColor,
@@ -165,13 +241,13 @@ BootAndroidFromCurrentSlot (VOID)
   if (!GetVmData ()) {
     DEBUG ((EFI_D_ERROR, "DualStageLoader: VM Hyp calls not present\n"));
   }
-  RenderStageBanner ("BOARD INIT", BGR_CYAN);
+  RenderStageBanner ("BOARD INIT", BGR_CYAN, BGR_BLACK, 2);
   ProbeRebootIf (12, "DualStageLoaderAfterBoardInit");
 
   Info.MultiSlotBoot = MultiSlotBoot;
   Info.SilentBootMode = NON_SILENT_MODE;
 
-  RenderStageBanner ("LOAD IMAGE", BGR_YELLOW);
+  RenderStageBanner ("LOAD IMAGE", BGR_YELLOW, BGR_BLACK, 3);
   ProbeRebootIf (13, "DualStageLoaderBeforeLoadImageAndAuth");
   Status = LoadImageAndAuth (&Info, FALSE, FALSE
 #ifndef USE_DUMMY_BCC
@@ -184,7 +260,7 @@ BootAndroidFromCurrentSlot (VOID)
     return Status;
   }
 
-  RenderStageBanner ("BOOT LINUX", BGR_GREEN);
+  RenderStageBanner ("BOOT LINUX", BGR_GREEN, BGR_BLACK, 4);
   ProbeRebootIf (14, "DualStageLoaderBeforeBootLinux");
   return BootLinux (&Info);
 }
@@ -210,7 +286,7 @@ DualStageLoaderEntry (IN EFI_HANDLE ImageHandle, IN EFI_SYSTEM_TABLE *SystemTabl
   }
 
   StackGuardChkSetup ();
-  RenderStageBanner ("ENTRY", BGR_BLUE);
+  RenderStageBanner ("ENTRY", BGR_BLUE, BGR_WHITE, 1);
   ProbeRebootIf (11, "DualStageLoaderEntry");
   Status = BootAndroidFromCurrentSlot ();
 

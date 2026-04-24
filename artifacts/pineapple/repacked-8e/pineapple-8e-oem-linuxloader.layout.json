@@ -6,6 +6,6 @@
   "outer_volume": "1 8C8CE578-8A3D-4F1C-9935-896185C32DD3",
   "inner_volume": "0 631008B0-B2D1-410A-8B49-2C5C4D8ECC7E",
   "kernel_unpacked_size": 4194416,
-  "kernel_gzip_size": 2821902,
+  "kernel_gzip_size": 2821600,
   "boot_img": "pineapple-8e-oem-linuxloader.boot.img"
 }

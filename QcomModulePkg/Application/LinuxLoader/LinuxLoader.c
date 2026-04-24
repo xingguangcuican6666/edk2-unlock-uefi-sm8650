@@ -83,6 +83,7 @@
 #include <Library/HypervisorMvCalls.h>
 #include <Library/UpdateCmdLine.h>
 #include <Protocol/EFICardInfo.h>
+#include <Protocol/GraphicsOutput.h>
 
 #define MAX_APP_STR_LEN 64
 #define MAX_NUM_FS 10
@@ -115,32 +116,106 @@ STATIC CONST EFI_GUID mDualStageLoaderFileGuid = DUAL_STAGE_LOADER_FILE_GUID;
 
 STATIC
 VOID
-RenderStageBanner (
-  IN CONST CHAR8  *StageLabel,
-  IN UINT32       BgColor
+GetStagePixel (
+  IN  UINT32                          ColorId,
+  OUT EFI_GRAPHICS_OUTPUT_BLT_PIXEL   *Pixel
   )
 {
-  MENU_MSG_INFO MenuMsg;
-  CHAR8         EmptyMsg[] = "";
-  CHAR8         Title[MAX_MSG_SIZE];
-  CHAR8         Subtitle[MAX_MSG_SIZE];
-  UINT32        FgColor;
-  UINT32        Locations[] = {80, 120, 160, 200, 240, 280};
-  UINTN         Index;
+  Pixel->Reserved = 0;
+  switch (ColorId) {
+    case BGR_WHITE:
+      Pixel->Blue = 0xff; Pixel->Green = 0xff; Pixel->Red = 0xff; break;
+    case BGR_BLACK:
+      Pixel->Blue = 0x00; Pixel->Green = 0x00; Pixel->Red = 0x00; break;
+    case BGR_ORANGE:
+      Pixel->Blue = 0x00; Pixel->Green = 0xa5; Pixel->Red = 0xff; break;
+    case BGR_YELLOW:
+      Pixel->Blue = 0x00; Pixel->Green = 0xff; Pixel->Red = 0xff; break;
+    case BGR_RED:
+      Pixel->Blue = 0x00; Pixel->Green = 0x00; Pixel->Red = 0x98; break;
+    case BGR_GREEN:
+      Pixel->Blue = 0x00; Pixel->Green = 0xff; Pixel->Red = 0x00; break;
+    case BGR_BLUE:
+      Pixel->Blue = 0xff; Pixel->Green = 0x00; Pixel->Red = 0x00; break;
+    case BGR_CYAN:
+      Pixel->Blue = 0xff; Pixel->Green = 0xff; Pixel->Red = 0x00; break;
+    case BGR_SILVER:
+    default:
+      Pixel->Blue = 0xc0; Pixel->Green = 0xc0; Pixel->Red = 0xc0; break;
+  }
+}
+
+STATIC
+VOID
+RenderStageBanner (
+  IN CONST CHAR8  *StageLabel,
+  IN UINT32       BgColor,
+  IN UINT32       AccentColor,
+  IN UINTN        ProgressCount
+  )
+{
+  EFI_GRAPHICS_OUTPUT_PROTOCOL    *GraphicsOutput;
+  EFI_GRAPHICS_OUTPUT_BLT_PIXEL   Background;
+  EFI_GRAPHICS_OUTPUT_BLT_PIXEL   Accent;
+  EFI_STATUS                      Status;
+  UINTN                           Width;
+  UINTN                           Height;
+  UINTN                           TopStripeHeight;
+  UINTN                           BottomStripeHeight;
+  UINTN                           TagWidth;
+  UINTN                           Gap;
+  UINTN                           BlockWidth;
+  UINTN                           Index;
+  MENU_MSG_INFO                   MenuMsg;
+  CHAR8                           Title[MAX_MSG_SIZE];
+  CHAR8                           Subtitle[MAX_MSG_SIZE];
+  UINT32                          FgColor;
 
   if (!IsEnableDisplayMenuFlagSupported ()) {
     return;
   }
 
-  FgColor = (BgColor == BGR_BLUE || BgColor == BGR_RED) ? BGR_WHITE : BGR_BLACK;
-  DrawMenuInit ();
-
-  for (Index = 0; Index < ARRAY_SIZE (Locations); ++Index) {
-    SetMenuMsgInfo (&MenuMsg, EmptyMsg, COMMON_FACTOR, FgColor, BgColor,
-                    OPTION_ITEM, Locations[Index], NOACTION);
-    DrawMenu (&MenuMsg, NULL);
+  GraphicsOutput = NULL;
+  Status = gBS->LocateProtocol (&gEfiGraphicsOutputProtocolGuid, NULL,
+                                (VOID **)&GraphicsOutput);
+  if (EFI_ERROR (Status) || GraphicsOutput == NULL ||
+      GraphicsOutput->Mode == NULL || GraphicsOutput->Mode->Info == NULL) {
+    return;
   }
 
+  Width = GraphicsOutput->Mode->Info->HorizontalResolution;
+  Height = GraphicsOutput->Mode->Info->VerticalResolution;
+  if (Width == 0 || Height == 0) {
+    return;
+  }
+
+  GetStagePixel (BgColor, &Background);
+  GetStagePixel (AccentColor, &Accent);
+
+  GraphicsOutput->Blt (GraphicsOutput, &Background, EfiBltVideoFill,
+                       0, 0, 0, 0, Width, Height, 0);
+
+  TopStripeHeight = MAX (Height / 14, 24);
+  BottomStripeHeight = MAX (Height / 12, 28);
+  TagWidth = MAX (Width / 7, 96);
+  Gap = MAX (Width / 80, 8);
+  BlockWidth = MAX ((Width - ((ProgressCount + 1) * Gap)) / MAX (ProgressCount, 1), 48);
+
+  GraphicsOutput->Blt (GraphicsOutput, &Accent, EfiBltVideoFill,
+                       0, 0, 0, 0, Width, TopStripeHeight, 0);
+  GraphicsOutput->Blt (GraphicsOutput, &Accent, EfiBltVideoFill,
+                       0, 0, 0, Height - BottomStripeHeight,
+                       TagWidth, BottomStripeHeight, 0);
+
+  for (Index = 0; Index < ProgressCount; ++Index) {
+    UINTN DestX = Gap + (Index * (BlockWidth + Gap));
+    GraphicsOutput->Blt (GraphicsOutput, &Accent, EfiBltVideoFill,
+                         0, 0, DestX, Height - BottomStripeHeight,
+                         BlockWidth, BottomStripeHeight, 0);
+  }
+
+  DrawMenuInit ();
+  FgColor = (BgColor == BGR_BLUE || BgColor == BGR_RED) ? BGR_WHITE : BGR_BLACK;
   AsciiStrnCpyS (Title, sizeof (Title), "SM8650 LINUXLOADER",
                  AsciiStrLen ("SM8650 LINUXLOADER"));
   SetMenuMsgInfo (&MenuMsg, Title, COMMON_FACTOR, FgColor, BgColor,
@@ -430,7 +505,7 @@ LinuxLoaderEntry (IN EFI_HANDLE ImageHandle, IN EFI_SYSTEM_TABLE *SystemTable)
   }
 
   StackGuardChkSetup ();
-  RenderStageBanner ("ENTRY", BGR_BLUE);
+  RenderStageBanner ("ENTRY", BGR_BLUE, BGR_WHITE, 1);
   ProbeRebootIf (1, "LinuxLoaderEntry");
 
   BootStatsSetTimeStamp (BS_BL_START);
@@ -572,7 +647,7 @@ flashless_boot:
     DEBUG ((EFI_D_ERROR, "Error finding board information: %r\n", Status));
     return Status;
   }
-  RenderStageBanner ("BOARD INIT", BGR_CYAN);
+  RenderStageBanner ("BOARD INIT", BGR_CYAN, BGR_BLACK, 2);
   ProbeRebootIf (2, "LinuxLoaderAfterBoardInit");
 
   DEBUG ((EFI_D_INFO, "KeyPress:%u, BootReason:%u\n", KeyPressed, BootReason));
@@ -587,7 +662,7 @@ flashless_boot:
       goto fastboot;
   }
   else {
-    RenderStageBanner ("STAGE2 HANDOFF", BGR_ORANGE);
+    RenderStageBanner ("STAGE2 HANDOFF", BGR_ORANGE, BGR_BLACK, 3);
     ProbeRebootIf (3, "LinuxLoaderBeforeEmbeddedStage2");
     if (!BootIntoRecovery && !FlashlessBoot) {
       Status = LaunchEmbeddedSecondStage (ImageHandle);
@@ -607,7 +682,7 @@ flashless_boot:
     Info.BootReasonAlarm = BootReasonAlarm;
     Info.FlashlessBoot = FlashlessBoot;
     Info.SilentBootMode = SilentBootMode;
-    RenderStageBanner ("LOAD IMAGE", BGR_YELLOW);
+    RenderStageBanner ("LOAD IMAGE", BGR_YELLOW, BGR_BLACK, 4);
     ProbeRebootIf (4, "LinuxLoaderBeforeLoadImageAndAuth");
   #if HIBERNATION_SUPPORT_NO_AES
     BootIntoHibernationImage (&Info, &SetRotAndBootStateAndVBH);
@@ -622,13 +697,13 @@ flashless_boot:
       goto fastboot;
     }
 
-    RenderStageBanner ("BOOT LINUX", BGR_GREEN);
+    RenderStageBanner ("BOOT LINUX", BGR_GREEN, BGR_BLACK, 5);
     ProbeRebootIf (5, "LinuxLoaderBeforeBootLinux");
     BootLinux (&Info);
   }
 
 fastboot:
-  RenderStageBanner ("FASTBOOT FALLBACK", BGR_RED);
+  RenderStageBanner ("FASTBOOT FALLBACK", BGR_RED, BGR_WHITE, 6);
 #ifdef AUTO_VIRT_ABL
   DEBUG ((EFI_D_INFO, "Rebooting the device.\n"));
   RebootDevice (NORMAL_MODE);
