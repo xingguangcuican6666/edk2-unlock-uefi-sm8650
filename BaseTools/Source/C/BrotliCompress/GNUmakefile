@@ -40,8 +40,6 @@ include $(MAKEROOT)/Makefiles/app.makefile
 TOOL_INCLUDE = -I ./include
 LIBS += -lm
 
-ifeq ($(BUILD_NATIVE_AARCH64), true)
 # GCC 14 produces false positives in bundled Brotli sources on composite
 # hasher initialization paths. Keep -Werror for the rest of BaseTools.
 BUILD_CFLAGS += -Wno-error=stringop-overflow
-endif
