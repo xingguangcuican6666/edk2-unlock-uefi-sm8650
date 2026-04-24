@@ -307,6 +307,7 @@
 			ArmSmcLib|ArmPkg/Library/ArmSmcLib/ArmSmcLib.inf
 			BootLib|QcomModulePkg/Library/BootLib/BootLib.inf
 			StackCanary|QcomModulePkg/Library/StackCanary/StackCanary.inf
+			FastbootLib|QcomModulePkg/Library/FastbootLib/FastbootLib.inf
 			AvbLib|QcomModulePkg/Library/avb/AvbLib.inf
 			OpenDice|QcomModulePkg/Library/OpenDice/open-dice.inf
 			AesLib|QcomModulePkg/Library/aes/AesLib.inf

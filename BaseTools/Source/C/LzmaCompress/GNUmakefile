@@ -25,3 +25,4 @@ OBJECTS = \
 include $(MAKEROOT)/Makefiles/app.makefile
 
 BUILD_CFLAGS += -D_7ZIP_ST
+BUILD_CFLAGS += -Wno-error=dangling-pointer

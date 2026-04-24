@@ -50,6 +50,7 @@
   TimerLib
   BootLib
   StackCanary
+  FastbootLib
   UbsanLib
   Lz4Lib
 
@@ -94,6 +95,7 @@
   gEfiSimpleFileSystemProtocolGuid
   gEfiLoadFileProtocolGuid
   gEfiDiskIoProtocolGuid
+  gEfiEraseBlockProtocolGuid
   gEfiUsbIoProtocolGuid
   gEfiPlatformInfoProtocolGuid
   gEfiChipInfoProtocolGuid

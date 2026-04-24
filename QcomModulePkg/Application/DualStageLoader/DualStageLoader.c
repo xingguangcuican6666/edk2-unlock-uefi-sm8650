@@ -7,6 +7,7 @@
 #include "AutoGen.h"
 #include "BootLinux.h"
 #include "LinuxLoaderLib.h"
+#include <FastbootLib/FastbootMain.h>
 #include <Library/DeviceInfo.h>
 #include <Library/HypervisorMvCalls.h>
 #include <Library/PartitionTableUpdate.h>
@@ -16,6 +17,49 @@
 #define DEFAULT_STACK_CHK_GUARD 0xc0c0c0c0
 
 BccParams_t BccParamsRecvdFromAVB = {{0}};
+STATIC BOOLEAN BootIntoFastboot = FALSE;
+STATIC BOOLEAN BootIntoRecovery = FALSE;
+STATIC UINT32 BootDeviceType = EFI_MAX_FLASH_TYPE;
+
+BOOLEAN
+IsABRetryCountUpdateRequired (VOID)
+{
+  BOOLEAN BatteryStatus;
+
+  TargetPauseForBatteryCharge (&BatteryStatus);
+
+  if ((BatteryStatus && IsChargingScreenEnable ()) ||
+      BootIntoFastboot ||
+      BootIntoRecovery) {
+    return FALSE;
+  }
+  return TRUE;
+}
+
+UINT32
+GetBootDeviceType (VOID)
+{
+  UINTN      DataSize;
+  EFI_STATUS Status;
+
+  DataSize = sizeof (BootDeviceType);
+  Status = EFI_SUCCESS;
+
+  if (BootDeviceType == EFI_MAX_FLASH_TYPE) {
+    Status = gRT->GetVariable (
+                    L"SharedImemBootCfgVal",
+                    &gQcomTokenSpaceGuid,
+                    NULL,
+                    &DataSize,
+                    &BootDeviceType
+                    );
+    if (Status != EFI_SUCCESS) {
+      DEBUG ((EFI_D_ERROR, "Failed to get boot device type, %r\n", Status));
+    }
+  }
+
+  return BootDeviceType;
+}
 
 STATIC
 EFI_STATUS
@@ -27,6 +71,8 @@ BootAndroidFromCurrentSlot (VOID)
 
   MultiSlotBoot = FALSE;
   ZeroMem (&Info, sizeof (Info));
+  BootIntoFastboot = FALSE;
+  BootIntoRecovery = FALSE;
 
   Status = DeviceInfoInit ();
   if (EFI_ERROR (Status)) {

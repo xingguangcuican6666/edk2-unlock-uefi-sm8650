@@ -43,3 +43,4 @@ LIBS += -lm
 # GCC 14 produces false positives in bundled Brotli sources on composite
 # hasher initialization paths. Keep -Werror for the rest of BaseTools.
 BUILD_CFLAGS += -Wno-error=stringop-overflow
+BUILD_CFLAGS += -Wno-error=vla-parameter

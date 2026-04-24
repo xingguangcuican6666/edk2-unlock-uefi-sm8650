@@ -1,0 +1,10 @@
+target=pineapple
+tool_chain_tag=CLANG35
+target_arch=AARCH64
+build_target=DEBUG
+boot_header_version=4
+boot_cmdline=
+boot_img=pineapple-dualstage-boot.img
+primary_uefi=pineapple-stage1-linuxloader.efi
+embedded_stage2_efi=pineapple-stage2-loader.efi
+unsigned_abl=pineapple-unsigned_abl.elf
