@@ -115,6 +115,7 @@ append_define REMOVE_CARVEOUT_REGION "${REMOVE_CARVEOUT_REGION-}"
 append_define QSPA_BOOTCONFIG_ENABLE "${QSPA_BOOTCONFIG_ENABLE-}"
 append_define AUTO_VIRT_ABL "${AUTO_VIRT_ABL-}"
 append_define DDR_SUPPORTS_SCT_CONFIG "${DDR_SUPPORTS_SCT_CONFIG-}"
+append_define FORCE_EL1_UNLOCK_AND_SHUTDOWN "${FORCE_EL1_UNLOCK_AND_SHUTDOWN-}"
 
 "${build_args[@]}"
 
@@ -248,6 +249,7 @@ target_arch=${TARGET_ARCH}
 build_target=${BUILD_TARGET}
 boot_header_version=${BOOT_HEADER_VERSION}
 boot_cmdline=${BOOT_CMDLINE}
+force_el1_unlock_and_shutdown=${FORCE_EL1_UNLOCK_AND_SHUTDOWN-0}
 boot_img=pineapple-dualstage-boot.img
 boot_template=imgs/boot.img
 init_boot_template=imgs/init_boot.img

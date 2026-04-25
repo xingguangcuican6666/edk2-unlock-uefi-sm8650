@@ -100,6 +100,10 @@
 #define PROBE_REBOOT_STAGE_ID 0
 #endif
 
+#ifndef FORCE_EL1_UNLOCK_AND_SHUTDOWN
+#define FORCE_EL1_UNLOCK_AND_SHUTDOWN 0
+#endif
+
 #if HIBERNATION_SUPPORT_NO_AES
 VOID BootIntoHibernationImage (BootInfo *Info,
                                BOOLEAN *SetRotAndBootStateAndVBH);
@@ -243,6 +247,31 @@ ProbeRebootIf (
   DEBUG ((EFI_D_ERROR, "UEFI reboot probe %u hit at %a\n", ProbeId, ProbeName));
   RebootDevice (NORMAL_MODE);
   CpuDeadLoop ();
+}
+
+STATIC
+VOID
+MaybeForceUnlockAndShutdown (
+  VOID
+  )
+{
+#if FORCE_EL1_UNLOCK_AND_SHUTDOWN
+  EFI_STATUS Status;
+
+  DEBUG ((EFI_D_ERROR, "FORCE_EL1_UNLOCK_AND_SHUTDOWN: attempting unlock\n"));
+  Status = SetDeviceUnlockValue (UNLOCK, TRUE);
+  if (EFI_ERROR (Status)) {
+    DEBUG ((EFI_D_ERROR,
+            "FORCE_EL1_UNLOCK_AND_SHUTDOWN: unlock failed: %r\n",
+            Status));
+    return;
+  }
+
+  DEBUG ((EFI_D_ERROR,
+          "FORCE_EL1_UNLOCK_AND_SHUTDOWN: unlock succeeded, powering off\n"));
+  ShutdownDevice ();
+  CpuDeadLoop ();
+#endif
 }
 
 // This function is used to Deactivate MDTP by entering recovery UI
@@ -647,6 +676,7 @@ flashless_boot:
     DEBUG ((EFI_D_ERROR, "Error finding board information: %r\n", Status));
     return Status;
   }
+  MaybeForceUnlockAndShutdown ();
   RenderStageBanner ("BOARD INIT", BGR_CYAN, BGR_BLACK, 2);
   ProbeRebootIf (2, "LinuxLoaderAfterBoardInit");
 
